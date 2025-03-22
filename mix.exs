@@ -1,4 +1,4 @@
-defmodule TaxCalculator.MixProject do
+defmodule Tax.MixProject do
   use Mix.Project
 
   def project do
@@ -11,7 +11,6 @@ defmodule TaxCalculator.MixProject do
     ]
   end
 
-  # Run "mix help compile.app" to learn about applications.
   def application do
     [
       extra_applications: [:logger]
