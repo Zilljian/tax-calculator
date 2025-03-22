@@ -44,16 +44,34 @@ defmodule Tax do
   ]
 
 
+  def esp_take_home(amount, verbose? \\ false) do
+    take_home = prepare_take_home(amount, @spain_tax_rates)
+    result = [
+      {"Annual Gross",      amount},
+      {"Annual Take Home",  take_home}
+    ]
+    if verbose? do
+      monthly_gross = amount |> D.new() |> D.div(12) |> D.to_float |> Float.round(3)
+      monthly_take_home = take_home |> D.from_float() |> D.div(12) |> D.to_float |> Float.round(3)
+      
+      result ++
+      [
+        {"Monthly Gross",     monthly_gross},
+        {"Monthly Take Home", monthly_take_home}
+      ]
+    else
+      result
+    end
+  end
 
-  def esp_take_home(amount), do: @spain_tax_rates |> prepare_rates() |> take_home(amount)
+  def prt_take_home(amount), do: prepare_take_home(amount, @portugal_tax_rates)
 
-  def prt_take_home(amount), do: @portugal_tax_rates |> prepare_rates() |> take_home(amount)
+  def uk_take_home(amount), do: prepare_take_home(amount, @uk_tax_rates)
 
-  def uk_take_home(amount), do: @uk_tax_rates |> prepare_rates() |> take_home(amount)
-
-  def ru_take_home(amount), do: @russia_tax_rates |> prepare_rates() |> take_home(amount)
+  def ru_take_home(amount), do: prepare_take_home(amount, @russia_tax_rates)
 
 
+  defp prepare_take_home(amount, rates), do: rates |> prepare_rates() |> take_home(amount)
 
   defp prepare_rates(rates), do: [{D.new(0), D.new(1)} | rates] |> prepare_rates_difs()
 
