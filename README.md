@@ -1,21 +1,26 @@
 # Taxcalculator
 
-**TODO: Add description**
+**A simple tax calculator. Can be run in iex.**
 
-## Installation
+## Run
 
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed
-by adding `taxcalculator` to your list of dependencies in `mix.exs`:
-
-```elixir
-def deps do
-  [
-    {:taxcalculator, "~> 0.1.0"}
-  ]
-end
+In order to run application clone this repo and run `iex`:
+```shell
+git clone git@github.com:Zilljian/tax-calculator.git tax-calculator
+cd tax-calculator
+iex -S mix run
 ```
 
-Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
-and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at <https://hexdocs.pm/taxcalculator>.
+## Functions
 
+Allowed 4 similar funcions for calculating simple take home from annual gross value.
+
+```elixir
+esp_take_home/1
+
+prt_take_home/1
+
+uk_take_home/1
+
+ru_take_home/1
+```
