@@ -13,14 +13,17 @@ iex -S mix run
 
 ## Functions
 
-Allowed 4 similar funcions for calculating simple take home from annual gross value.
+Allowed 3 similar funcions for calculating simple take home from annual gross value.
 
 ```elixir
-esp_take_home/1
+prt_take_home/2
 
-prt_take_home/1
+uk_take_home/2
 
-uk_take_home/1
+ru_take_home/2
+```
 
-ru_take_home/1
+And one more for Spain, since Spain has unique Beckham's law applied for some cases.
+```elixir
+esp_take_home/3
 ```
